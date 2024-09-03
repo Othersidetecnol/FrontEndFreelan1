@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FrontEndFreelan</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_infos">Infos</string>
+    <string name="title_ordens">Ordens</string>
+    <string name="title_agenda">Agenda</string>
+</resources>
