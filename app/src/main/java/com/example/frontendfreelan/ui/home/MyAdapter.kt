@@ -10,27 +10,33 @@ import com.example.frontendfreelan.R
 
 data class Item(val title: String, val location: String, val category: String, val value: String, val description: String)
 
-class MyAdapter(private val items: List<Item>) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+class MyAdapter(private val items: List<Item>, private val isHorizontal: Boolean) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val titleView: TextView = view.findViewById(R.id.item_title)
-        val locationView: TextView = view.findViewById(R.id.item_location)
-        val categoryView: TextView = view.findViewById(R.id.item_category)
-        val valueView: TextView = view.findViewById(R.id.item_value)
+        val descriptionView: TextView? = view.findViewById(R.id.item_description)
+        val locationView: TextView? = view.findViewById(R.id.item_location)
+        val categoryView: TextView? = view.findViewById(R.id.item_category)
+        val valueView: TextView? = view.findViewById(R.id.item_value)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_layout, parent, false)
+        val layoutId = if (isHorizontal) {
+            R.layout.item_layout_list_horizontal
+        } else {
+            R.layout.item_layout
+        }
+        val view = LayoutInflater.from(parent.context).inflate(layoutId, parent, false)
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.titleView.text = item.title
-        holder.locationView.text = item.location
-        holder.categoryView.text = item.category
-        holder.valueView.text = item.value
+        holder.descriptionView?.text = item.description
+        holder.locationView?.text = item.location
+        holder.categoryView?.text = item.category
+        holder.valueView?.text = item.value
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
