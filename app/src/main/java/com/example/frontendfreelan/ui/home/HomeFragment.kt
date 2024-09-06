@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.frontendfreelan.databinding.FragmentHomeBinding
+import com.seu.pacote.SpaceItemDecoration
 
 class HomeFragment : Fragment() {
 
@@ -20,16 +21,16 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val recyclerView: RecyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.addItemDecoration(SpaceItemDecoration(4)) // Adiciona 4dp de espaçamento
         homeViewModel.items.observe(viewLifecycleOwner) { items ->
-            recyclerView.adapter = MyAdapter(items)
+            recyclerView.adapter = MyAdapter(items, false)
         }
 
         return root

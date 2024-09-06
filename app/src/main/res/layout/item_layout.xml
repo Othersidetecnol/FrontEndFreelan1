@@ -1,57 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/item_background"> <!-- Aplica o fundo com borda arredondada -->
 
     <TextView
         android:id="@+id/item_title"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Título de Exemplo"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Título"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/item_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descrição"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/item_location"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Local de Exemplo"
-        android:textColor="@android:color/black"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/item_value"
-        app:layout_constraintTop_toTopOf="@+id/item_title" />
+        android:text="Local"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/item_category"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="Categoria de Exemplo"
-        android:textColor="@android:color/black"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/item_title"
-        app:layout_constraintTop_toBottomOf="@+id/item_title" />
+        android:text="Categoria"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/item_value"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="Valor de Exemplo"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/item_category"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_location" />
+        android:text="Valor"
+        android:textSize="14sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -21,18 +21,6 @@ class HomeViewModel : ViewModel() {
             Item("Aulas de Yoga", "Manaus", "Saúde e Bem-estar", "R$ 70,00 por aula", "Aulas de yoga para iniciantes e praticantes intermediários."),
             Item("Consultoria Financeira", "Goiânia", "Consultoria", "R$ 400,00", "Consultoria para planejamento financeiro pessoal ou empresarial."),
             Item("Pintura de Interiores", "Vitória", "Construção Civil", "R$ 1.200,00", "Pintura de paredes e tetos de ambientes internos."),
-            Item("Tradução de Documentos", "Belém", "Tradução e Interpretação", "R$ 100,00 por página", "Tradução de documentos do português para o inglês e vice-versa."),
-            Item("Serviço de Encanador", "João Pessoa", "Serviços Domésticos", "R$ 250,00", "Reparo e manutenção de encanamentos em residências."),
-            Item("Consultoria de Marketing", "Maceió", "Consultoria", "R$ 800,00", "Consultoria para estratégias de marketing digital e tradicional."),
-            Item("Aulas de Violão", "Campo Grande", "Educação", "R$ 60,00 por aula", "Aulas particulares de violão para todas as idades."),
-            Item("Manutenção de Automóveis", "Aracaju", "Serviços Automotivos", "R$ 500,00", "Serviços de manutenção preventiva e corretiva de automóveis."),
-            Item("Assistência Técnica de Celulares", "Cuiabá", "Tecnologia da Informação", "R$ 150,00", "Reparo de smartphones, incluindo troca de telas e baterias."),
-            Item("Pet Sitting", "Palmas", "Cuidados com Animais", "R$ 80,00 por dia", "Cuidado de animais de estimação durante a ausência dos donos."),
-            Item("Aulas de Dança", "São Luís", "Saúde e Bem-estar", "R$ 40,00 por aula", "Aulas de dança de diferentes estilos para todas as idades."),
-            Item("Consultoria de Recursos Humanos", "Natal", "Consultoria", "R$ 1.000,00", "Consultoria em gestão de pessoas e recursos humanos."),
-            Item("Manutenção de Piscinas", "Teresina", "Serviços Domésticos", "R$ 180,00", "Limpeza e manutenção de piscinas residenciais e comerciais."),
-            Item("Aulas de Reforço Escolar", "Porto Velho", "Educação", "R$ 45,00 por hora", "Aulas particulares de reforço escolar para diversas disciplinas.")
-
         )
     }
     val items: LiveData<List<Item>> = _items
