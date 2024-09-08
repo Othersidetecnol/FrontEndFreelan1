@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.frontendfreelan">
@@ -12,12 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrontEndFreelan"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.ResultScheduleActivity"
+            android:exported="false" />
+        <activity android:name=".ui.ScheduleActivity" />
+        <activity android:name=".ui.TaskFormActivity" />
 
         <activity
             android:name=".ui.DailyScheduleActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.TaskFormActivity"
             android:exported="false" />
         <activity
             android:name=".ui.chat.ChatActivity"
@@ -31,6 +34,7 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
