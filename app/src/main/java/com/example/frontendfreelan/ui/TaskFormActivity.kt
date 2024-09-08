@@ -1,24 +1,20 @@
-package com.example.frontendfreelan.ui.notifications
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.frontendfreelan.databinding.ActivityTaskFormBinding
+import com.example.frontendfreelan.ui.notifications.NotificationsViewModel
 
+// TaskFormActivity.kt
 class TaskFormActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTaskFormBinding
     private var taskPosition: Int? = null
-    private lateinit var notificationsViewModel: NotificationsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTaskFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        notificationsViewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
 
         val task = intent.getParcelableExtra<NotificationsViewModel.Task>("task")
         taskPosition = intent.getIntExtra("position", -1)

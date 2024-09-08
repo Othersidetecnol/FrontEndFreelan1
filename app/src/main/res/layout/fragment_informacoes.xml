@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll_fragment_informacoes"
+    android:layout_width="match_parent"
+    android:layout_height="1400dp"
+    tools:context=".ui.informacoes.InformacoesFragment">
+
+    <LinearLayout
+        android:id="@+id/linear_layout_vert_frag_informacoes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Horizontal ScrollView para propagandas -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="600dp"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/ad_image_1_desc"
+                    android:src="@drawable/ad_image_1" />
+
+                <ImageView
+                    android:layout_width="600dp"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/ad_image_2_desc"
+                    android:src="@drawable/ad_image_2" />
+
+                <ImageView
+                    android:layout_width="600dp"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/ad_image_3_desc"
+                    android:src="@drawable/ad_image_3" />
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/ad_image_4_desc"
+                    android:src="@drawable/ad_image_4" />
+
+                <ImageView
+                    android:layout_width="600dp"
+                    android:layout_height="200dp"
+                    android:contentDescription="@string/ad_image_5_desc"
+                    android:src="@drawable/ad_image_5" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!-- Links externos -->
+        <TextView
+            android:id="@+id/link_externo_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:autoLink="web"
+            android:clickable="true"
+            android:onClick="onLinkClick"
+            android:padding="8dp"
+            android:tag="https://www.example.com/link1"
+            android:text="Link Externo 1"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/link_externo_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:autoLink="web"
+            android:clickable="true"
+            android:onClick="onLinkClick"
+            android:padding="8dp"
+            android:tag="https://www.example.com/link2"
+            android:text="Link Externo 2"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textSize="16sp" />
+
+        <!-- Botão para WhatsApp -->
+        <Button
+            android:id="@+id/button_whatsapp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:onClick="onWhatsAppClick"
+            android:text="Contato WhatsApp" />
+    </LinearLayout>
+</ScrollView>

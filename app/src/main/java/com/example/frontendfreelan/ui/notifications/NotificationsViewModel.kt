@@ -4,18 +4,35 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 
 class NotificationsViewModel : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+    // LiveData para a lista de tarefas
+    private val _tasks = MutableLiveData<List<Task>>().apply {
+        value = listOf() // Lista vazia inicial
     }
-    val text: LiveData<String> = _text
+    val tasks: LiveData<List<Task>> = _tasks
 
+    // LiveData para a data selecionada
+    private val _selectedDate = MutableLiveData<String>()
+    val selectedDate: LiveData<String> = _selectedDate
+
+    // LiveData derivado que filtra as tarefas pela data selecionada
+    val tasksForSelectedDate: LiveData<List<Task>> = MediatorLiveData<List<Task>>().apply {
+        addSource(tasks) { taskList ->
+            value = taskList.filter { it.date == _selectedDate.value }
+        }
+        addSource(selectedDate) { date ->
+            value = tasks.value?.filter { it.date == date }
+        }
+    }
+
+    // Classe de dados Task
     data class Task(
         val title: String,
-        val date: String,
+        val date: String,  // Formato: "dd/MM/yyyy"
         val time: String,
         val description: String,
         val value: Double
@@ -51,18 +68,20 @@ class NotificationsViewModel : ViewModel() {
         }
     }
 
-    private val _tasks = MutableLiveData<List<Task>>().apply {
-        value = listOf()
-    }
-    val tasks: LiveData<List<Task>> = _tasks
-
+    // Método para adicionar uma tarefa
     fun addTask(task: Task) {
         _tasks.value = _tasks.value?.plus(task)
     }
 
+    // Método para atualizar uma tarefa
     fun updateTask(index: Int, task: Task) {
         _tasks.value = _tasks.value?.toMutableList()?.apply {
             set(index, task)
         }
+    }
+
+    // Método para definir a data selecionada
+    fun setSelectedDate(date: String) {
+        _selectedDate.value = date
     }
 }
