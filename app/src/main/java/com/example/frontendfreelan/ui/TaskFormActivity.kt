@@ -2,26 +2,31 @@ package com.example.frontendfreelan.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.frontendfreelan.databinding.ActivityTaskFormBinding
+import com.example.frontendfreelan.ui.notifications.SharedViewModel
 import java.util.Calendar
 
 class TaskFormActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTaskFormBinding
+    private lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTaskFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+
         binding.inputDate.setOnClickListener {
             showDatePickerDialog()
         }
 
         binding.saveButton.setOnClickListener {
-            // Ação ao clicar no botão salvar
-            // Adicione aqui o código para salvar os dados
+            saveTask()
             finish() // Fecha a atividade e retorna ao fragmento anterior
         }
     }
@@ -41,5 +46,19 @@ class TaskFormActivity : AppCompatActivity() {
             year, month, day
         )
         datePickerDialog.show()
+    }
+
+    private fun saveTask() {
+        val name = binding.inputName.text.toString()
+        val details = binding.inputDetails.text.toString()
+        val date = binding.inputDate.text.toString()
+        val time = binding.inputTime.text.toString()
+        val value = binding.inputValue.text.toString().toDoubleOrNull() ?: 0.0
+
+        val task = SharedViewModel.Task(name, date, time, details, value)
+        sharedViewModel.addTask(task)
+
+        // Adiciona uma mensagem de log para registrar a ação de salvar
+        Log.d("TaskFormActivity", "Task saved: $task")
     }
 }

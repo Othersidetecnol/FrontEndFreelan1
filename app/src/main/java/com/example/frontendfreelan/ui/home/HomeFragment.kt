@@ -26,7 +26,7 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val recyclerView: RecyclerView = binding.recyclerView
+        val recyclerView: RecyclerView = binding.recyclerViewResult
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.addItemDecoration(SpaceItemDecoration(4)) // Adiciona 4dp de espaçamento
         homeViewModel.items.observe(viewLifecycleOwner) { items ->

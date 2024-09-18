@@ -16,7 +16,6 @@
         <activity
             android:name=".ui.ResultScheduleActivity"
             android:exported="false" />
-        <activity android:name=".ui.ScheduleActivity" />
         <activity android:name=".ui.TaskFormActivity" />
 
         <activity

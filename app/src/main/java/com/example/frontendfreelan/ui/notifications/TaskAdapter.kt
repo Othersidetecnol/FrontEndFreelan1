@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.frontendfreelan.R
-import com.example.frontendfreelan.ui.notifications.NotificationsViewModel.Task
+import com.example.frontendfreelan.ui.notifications.SharedViewModel.Task
 
 class TaskAdapter(
     private var tasks: List<Task>,

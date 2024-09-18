@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.NotificationsFragment">
+    tools:context=".ui.notifications.NotificationsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,12 +27,12 @@
             android:layout_marginTop="16dp" />
 
         <Button
-            android:id="@+id/add_notification_button"
+            android:id="@+id/addNotificationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="Adicionar Notificação"
             android:layout_gravity="center_horizontal" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notificationsRecyclerView"

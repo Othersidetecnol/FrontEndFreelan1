@@ -9,17 +9,14 @@ import androidx.lifecycle.ViewModel
 
 class NotificationsViewModel : ViewModel() {
 
-    // LiveData para a lista de tarefas
     private val _tasks = MutableLiveData<List<Task>>().apply {
-        value = listOf() // Lista vazia inicial
+        value = listOf()
     }
     val tasks: LiveData<List<Task>> = _tasks
 
-    // LiveData para a data selecionada
     private val _selectedDate = MutableLiveData<String>()
     val selectedDate: LiveData<String> = _selectedDate
 
-    // LiveData derivado que filtra as tarefas pela data selecionada
     val tasksForSelectedDate: LiveData<List<Task>> = MediatorLiveData<List<Task>>().apply {
         addSource(tasks) { taskList ->
             value = taskList.filter { it.date == _selectedDate.value }
@@ -29,10 +26,9 @@ class NotificationsViewModel : ViewModel() {
         }
     }
 
-    // Classe de dados Task
     data class Task(
         val title: String,
-        val date: String,  // Formato: "dd/MM/yyyy"
+        val date: String,
         val time: String,
         val description: String,
         val value: Double
@@ -68,19 +64,10 @@ class NotificationsViewModel : ViewModel() {
         }
     }
 
-    // Método para adicionar uma tarefa
     fun addTask(task: Task) {
         _tasks.value = _tasks.value?.plus(task)
     }
 
-    // Método para atualizar uma tarefa
-    fun updateTask(index: Int, task: Task) {
-        _tasks.value = _tasks.value?.toMutableList()?.apply {
-            set(index, task)
-        }
-    }
-
-    // Método para definir a data selecionada
     fun setSelectedDate(date: String) {
         _selectedDate.value = date
     }

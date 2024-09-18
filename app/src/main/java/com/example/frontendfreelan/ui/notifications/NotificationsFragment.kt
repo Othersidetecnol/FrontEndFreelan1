@@ -8,9 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.frontendfreelan.databinding.FragmentNotificationsBinding
-import com.example.frontendfreelan.ui.ScheduleActivity
-import com.example.frontendfreelan.ui.Task
-import java.util.Calendar
+import com.example.frontendfreelan.ui.ResultScheduleActivity
+import com.example.frontendfreelan.ui.TaskFormActivity
 
 class NotificationsFragment : Fragment() {
 
@@ -26,29 +25,25 @@ class NotificationsFragment : Fragment() {
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = "$dayOfMonth/${month + 1}/$year"
-            openScheduleActivity(selectedDate)
+            openResultScheduleActivity(selectedDate)
         }
 
         binding.addNotificationButton.setOnClickListener {
-            // Ação ao clicar no botão adicionar notificação
+            openTaskFormActivity()
         }
 
         return root
     }
 
-    private fun openScheduleActivity(date: String) {
-        val taskList = getTasksForDate(date) // Função para obter as tarefas salvas para a data selecionada
-        val intent = Intent(requireContext(), ScheduleActivity::class.java)
-        intent.putParcelableArrayListExtra("taskList", ArrayList(taskList))
+    private fun openResultScheduleActivity(date: String) {
+        val intent = Intent(requireContext(), ResultScheduleActivity::class.java)
+        intent.putExtra("selectedDate", date)
         startActivity(intent)
     }
 
-    private fun getTasksForDate(date: String): List<NotificationsViewModel.Task> {
-        // Implemente a lógica para obter as tarefas salvas para a data selecionada
-        return listOf(
-            NotificationsViewModel.Task("Task 1", "Details 1", date, "10:00", "Value 1"),
-            NotificationsViewModel.Task("Task 2", "Details 2", date, "11:00", "Value 2")
-        )
+    private fun openTaskFormActivity() {
+        val intent = Intent(requireContext(), TaskFormActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroyView() {

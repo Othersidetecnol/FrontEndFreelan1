@@ -1,21 +1,38 @@
 package com.example.frontendfreelan.ui
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.frontendfreelan.R
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.frontendfreelan.databinding.ActivityResultScheduleBinding
+import com.example.frontendfreelan.ui.notifications.SharedViewModel
+import com.example.frontendfreelan.ui.notifications.TaskAdapter
 
 class ResultScheduleActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityResultScheduleBinding
+    private lateinit var taskAdapter: TaskAdapter
+    private lateinit var sharedViewModel: SharedViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_result_schedule)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityResultScheduleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
+
+        taskAdapter = TaskAdapter(emptyList()) { task, position ->
+            // Ação ao clicar em um item da lista
+        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = taskAdapter
+
+        sharedViewModel.tasks.observe(this) { taskList ->
+            taskAdapter.updateTasks(taskList)
+        }
+
+        binding.btnVoltar.setOnClickListener {
+            finish()
         }
     }
 }
