@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id ("kotlin-parcelize")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -35,6 +36,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
     buildFeatures {
         viewBinding = true
     }
@@ -42,6 +45,18 @@ android {
 }
 
 dependencies {
+    //dependencias firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.3.0"))
+    //analytics firebase
+    implementation("com.google.firebase:firebase-analytics")
+    //authentification firebase
+    implementation("com.google.firebase:firebase-auth")
+    //firestore firebase
+
+    //storage firebase
+    implementation("com.google.firebase:firebase-storage")
+
+
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")
     implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.0")

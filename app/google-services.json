@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "588034513613",
+    "project_id": "chatfreelan",
+    "storage_bucket": "chatfreelan.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588034513613:android:af73ba48e2631a43ad6784",
+        "android_client_info": {
+          "package_name": "com.example.frontendfreelan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB78vh4_Kzfj7se4JFplZQNOhwh3ZTdKB4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

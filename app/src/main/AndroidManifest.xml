@@ -13,13 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrontEndFreelan"
         tools:targetApi="31">
+
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".ui.login.CadastroActivity"
+            android:parentActivityName=".ui.login.LoginActivity"
+            android:exported="false" />
+
         <activity
             android:name=".ui.ResultScheduleActivity"
             android:exported="false" />
         <activity android:name=".ui.TaskFormActivity" />
 
         <activity
-            android:name=".ui.DailyScheduleActivity"
+            android:name=".ui.dailyschedule.DailyScheduleActivity"
             android:exported="false" />
         <activity
             android:name=".ui.chat.ChatActivity"
@@ -28,7 +39,7 @@
             android:name=".ui.home.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>

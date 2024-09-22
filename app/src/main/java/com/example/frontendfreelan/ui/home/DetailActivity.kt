@@ -24,13 +24,13 @@ class DetailActivity : AppCompatActivity() {
         binding.detailCategory.text = category
         binding.detailDescription.text = description
 
+        // Ação do botão Fechar
         binding.detailButton.setOnClickListener {
-            // Ação do botão Fechar
-            finish()
+            finish() // Fecha a activity
         }
 
-        binding.button.setOnClickListener {
-            // Ação do botão Iniciar Chat
+        // Ação do botão Iniciar Chat
+        binding.btnIniciarChat.setOnClickListener {
             val intent = Intent(this, ChatActivity::class.java)
             startActivity(intent)
         }
