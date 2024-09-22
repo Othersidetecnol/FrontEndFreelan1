@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.frontendfreelan.MainActivity
 import com.example.frontendfreelan.databinding.ActivityCadastroBinding
+import com.example.frontendfreelan.ui.chat.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jamiltondamasceno.aulawhatsapp.utils.exibirMensagem
 
 class CadastroActivity : AppCompatActivity() {
@@ -20,9 +22,15 @@ class CadastroActivity : AppCompatActivity() {
     private lateinit var nome: String
     private lateinit var email: String
     private lateinit var senha: String
+
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
     }
+
+    private val firestore by lazy {
+        FirebaseFirestore.getInstance()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,10 +54,25 @@ class CadastroActivity : AppCompatActivity() {
             email, senha
         ).addOnCompleteListener { resultado ->
             if( resultado.isSuccessful ){
-                exibirMensagem("Sucesso ao fazer seu cadastro")
+
+                val idUsuario = resultado.result.user?.uid
+                if(idUsuario != null){
+                    val usuario = Usuario(
+                        id = idUsuario,
+                        nome = nome,
+                        email = email
+                    )
+
+                    salvarUsuarioFirestore(usuario)
+
+                }
+
                 startActivity(
                     Intent(applicationContext, MainActivity::class.java)
                 )
+
+
+
             }
         }.addOnFailureListener { erro ->
             try {
@@ -66,6 +89,20 @@ class CadastroActivity : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun salvarUsuarioFirestore(usuario: Usuario) {
+
+        firestore
+            .collection("usuarios")
+            .document(usuario.id)
+            .set(usuario)
+            .addOnSuccessListener {
+                exibirMensagem("Sucesso ao fazer seu cadastro")
+        }.addOnFailureListener{
+            exibirMensagem("Erro ao fazer seu cadastro")
+
+        }
     }
 
     private fun validarCampos(): Boolean {

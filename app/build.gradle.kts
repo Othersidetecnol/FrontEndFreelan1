@@ -52,6 +52,7 @@ dependencies {
     //authentification firebase
     implementation("com.google.firebase:firebase-auth")
     //firestore firebase
+    implementation("com.google.firebase:firebase-storage")
 
     //storage firebase
     implementation("com.google.firebase:firebase-storage")
@@ -71,6 +72,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.activity)
     implementation(libs.play.services.gcm)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
