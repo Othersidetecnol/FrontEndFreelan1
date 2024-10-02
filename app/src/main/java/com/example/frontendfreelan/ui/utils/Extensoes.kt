@@ -1,4 +1,4 @@
-package com.jamiltondamasceno.aulawhatsapp.utils
+package com.example.frontendfreelan.ui.utils;
 
 import android.app.Activity
 import android.widget.Toast

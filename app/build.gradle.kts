@@ -40,6 +40,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+
     }
 
 }
@@ -57,6 +58,13 @@ dependencies {
     //storage firebase
     implementation("com.google.firebase:firebase-storage")
 
+
+    implementation ("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.appcompat:appcompat:1.4.2")
+    implementation ("com.google.android.material:material:1.6.1")
+    implementation ("androidx.core:core-ktx:1.8.0")
+
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0")

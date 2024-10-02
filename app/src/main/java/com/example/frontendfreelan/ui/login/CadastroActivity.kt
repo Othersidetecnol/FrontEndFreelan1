@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
-import com.jamiltondamasceno.aulawhatsapp.utils.exibirMensagem
+import com.example.frontendfreelan.ui.utils.exibirMensagem;
 
 class CadastroActivity : AppCompatActivity() {
 
@@ -108,7 +108,7 @@ class CadastroActivity : AppCompatActivity() {
     private fun validarCampos(): Boolean {
 
         nome = binding.editNome.text.toString()
-        email = binding.editEmail.text.toString()
+        email = binding.editCadEmail.text.toString()
         senha = binding.editSenha.text.toString()
 
         if( nome.isNotEmpty() ){
@@ -116,7 +116,7 @@ class CadastroActivity : AppCompatActivity() {
             binding.textInputNome.error = null
             if( email.isNotEmpty() ){
 
-                binding.textInputEmail.error = null
+                binding.textLayoutCadEmail.error = null
                 if( senha.isNotEmpty() ){
                     binding.textInputSenha.error = null
                     return true
@@ -126,7 +126,7 @@ class CadastroActivity : AppCompatActivity() {
                 }
 
             }else{
-                binding.textInputEmail.error = "Preencha o seu e-mail!"
+                binding.textLayoutCadEmail.error = "Preencha o seu e-mail!"
                 return false
             }
 

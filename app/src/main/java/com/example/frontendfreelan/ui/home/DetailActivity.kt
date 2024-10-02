@@ -16,10 +16,14 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val nameCliente = intent.getStringExtra("nameCliente")
+        val localCliente = intent.getStringExtra("localCliente")
         val title = intent.getStringExtra("title")
         val category = intent.getStringExtra("category")
         val description = intent.getStringExtra("description")
 
+        binding.clienteName.text = nameCliente
+        binding.clienteLocal.text = localCliente
         binding.detailTitle.text = title
         binding.detailCategory.text = category
         binding.detailDescription.text = description

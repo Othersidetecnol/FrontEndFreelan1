@@ -13,39 +13,42 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FrontEndFreelan"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".ui.home.AddItemActivity"
+            android:exported="false" />
+        <!-- Configurações gerais do aplicativo, como ícones, tema, suporte a RTL e backup -->
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
-
+            android:exported="false" /> <!-- Declaração da atividade principal do aplicativo, não exportada -->
         <activity
             android:name=".ui.login.CadastroActivity"
-            android:parentActivityName=".ui.login.LoginActivity"
-            android:exported="false" />
-
+            android:exported="false"
+            android:parentActivityName=".ui.login.LoginActivity" /> <!-- Declaração da atividade de cadastro, com atividade pai definida, não exportada -->
         <activity
             android:name=".ui.ResultScheduleActivity"
-            android:exported="false" />
-        <activity android:name=".ui.TaskFormActivity" />
-
+            android:exported="false" /> <!-- Declaração da atividade de resultado de agendamento, não exportada -->
+        <activity android:name=".ui.TaskFormActivity" /> <!-- Declaração da atividade de formulário de tarefa, exportação padrão (true) -->
         <activity
             android:name=".ui.dailyschedule.DailyScheduleActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- Declaração da atividade de agenda diária, não exportada -->
         <activity
             android:name=".ui.chat.ChatActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- Declaração da atividade de chat, não exportada -->
         <activity
             android:name=".ui.home.DetailActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- Declaração da atividade de detalhes, não exportada -->
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
+
+            <!-- Declaração da atividade de login, exportada e com rótulo definido -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <!-- Define esta atividade como a principal ação -->
 
                 <category android:name="android.intent.category.LAUNCHER" />
+                <!-- Define esta atividade como a lançadora do aplicativo -->
             </intent-filter>
         </activity>
     </application>

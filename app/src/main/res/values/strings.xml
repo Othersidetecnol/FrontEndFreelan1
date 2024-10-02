@@ -1,16 +1,22 @@
 <resources>
+
     <string name="app_name">FrontEndFreelan</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_infos">Infos</string>
     <string name="title_ordens">Ordens</string>
     <string name="title_agenda">Agenda</string>
+
     <!-- descricao fragment informacoes -->
     <string name="ad_image_1_desc">Lorem Ipsum</string>
     <string name="ad_image_2_desc">Lorem Ipsum</string>
     <string name="ad_image_3_desc">Lorem Ipsum</string>
     <string name="ad_image_4_desc">Lorem Ipsum</string>
     <string name="ad_image_5_desc">Lorem Ipsum</string>
+
     <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="erro_usuario_invalido">Usuario ou senha invalida</string>
+
 </resources>
