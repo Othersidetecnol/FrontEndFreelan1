@@ -3,7 +3,6 @@ package com.example.frontendfreelan.ui.home
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.frontendfreelan.R
 import com.example.frontendfreelan.databinding.ActivityDetailBinding
 import com.example.frontendfreelan.ui.chat.ChatActivity
 
@@ -21,12 +20,16 @@ class DetailActivity : AppCompatActivity() {
         val title = intent.getStringExtra("title")
         val category = intent.getStringExtra("category")
         val description = intent.getStringExtra("description")
+        val startDate = intent.getStringExtra("startDate")
+        val endDate = intent.getStringExtra("endDate")
 
         binding.clienteName.text = nameCliente
         binding.clienteLocal.text = localCliente
         binding.detailTitle.text = title
         binding.detailCategory.text = category
         binding.detailDescription.text = description
+        binding.startDate.text = startDate
+        binding.endDate.text = endDate
 
         // Ação do botão Fechar
         binding.detailButton.setOnClickListener {

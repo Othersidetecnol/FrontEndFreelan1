@@ -21,8 +21,20 @@ class AddItemActivity : AppCompatActivity() {
             val category = binding.category.text.toString()
             val value = binding.value.text.toString()
             val description = binding.description.text.toString()
+            val startDate = binding.startDate.text.toString()
+            val endDate = binding.endDate.text.toString()
 
-            val item = ItemHome(nameCliente, localCliente, title, category, value, description)
+            // Certifique-se de que todos os parâmetros estão sendo passados corretamente
+            val item = ItemHome(
+                name_cliente = nameCliente,
+                local_cliente = localCliente,
+                title = title,
+                category = category,
+                value = value,
+                description = description,
+                startDate = startDate,
+                endDate = endDate
+            )
 
             val db = FirebaseFirestore.getInstance()
             db.collection("items")

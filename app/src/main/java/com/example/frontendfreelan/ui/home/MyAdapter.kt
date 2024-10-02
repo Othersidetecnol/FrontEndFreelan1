@@ -9,6 +9,8 @@ import com.example.frontendfreelan.databinding.ItemLayoutBinding
 class MyAdapter(private var items: List<ItemHome>, private val isEditable: Boolean) :
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
+    private var originalItems: List<ItemHome> = items
+
     class ViewHolder(val binding: ItemLayoutBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +36,8 @@ class MyAdapter(private var items: List<ItemHome>, private val isEditable: Boole
                 putExtra("title", item.title)
                 putExtra("category", item.category)
                 putExtra("description", item.description)
+                putExtra("startDate", item.startDate)
+                putExtra("endDate", item.endDate)
             }
             context.startActivity(intent)
         }
@@ -42,7 +46,17 @@ class MyAdapter(private var items: List<ItemHome>, private val isEditable: Boole
     override fun getItemCount(): Int = items.size
 
     fun updateItems(newItems: List<ItemHome>) {
+        originalItems = newItems
         items = newItems
+        notifyDataSetChanged()
+    }
+
+    fun filter(query: String) {
+        items = if (query.isEmpty()) {
+            originalItems
+        } else {
+            originalItems.filter { it.category.contains(query, ignoreCase = true) }
+        }
         notifyDataSetChanged()
     }
 }
