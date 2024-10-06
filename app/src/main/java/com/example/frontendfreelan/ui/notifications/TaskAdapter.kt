@@ -6,11 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.frontendfreelan.R
-import com.example.frontendfreelan.ui.notifications.SharedViewModel.Task
 
 class TaskAdapter(
-    private var tasks: List<Task>,
-    private val onItemClick: (Task, Int) -> Unit
+    private var tasks: List<NotificationsViewModel.Task>,
+    private val onItemClick: (NotificationsViewModel.Task, Int) -> Unit
 ) : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -42,7 +41,7 @@ class TaskAdapter(
 
     override fun getItemCount(): Int = tasks.size
 
-    fun updateTasks(newTasks: List<Task>) {
+    fun updateTasks(newTasks: List<NotificationsViewModel.Task>) {
         tasks = newTasks
         notifyDataSetChanged()
     }

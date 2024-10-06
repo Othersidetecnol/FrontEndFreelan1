@@ -3,6 +3,8 @@ package com.example.frontendfreelan.ui.dailyschedule
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.Button
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.frontendfreelan.databinding.ActivityDailyScheduleBinding
@@ -35,6 +37,7 @@ class DailyScheduleActivity : AppCompatActivity() {
         // Log para depuração, para verificar se o RecyclerView e o Adapter foram inicializados corretamente
         Log.d("DailyScheduleActivity", "RecyclerView: ${binding.recyclerView}")
         Log.d("DailyScheduleActivity", "TaskAdapter: $taskAdapter")
+        Log.d("DailyScheduleActivity", "Button: ${binding.btnvoltar}")
 
         // Verifique se o RecyclerView não é nulo
         if (binding.recyclerView == null) {
@@ -49,5 +52,16 @@ class DailyScheduleActivity : AppCompatActivity() {
         sharedViewModel.tasks.observe(this) { taskList ->
             taskAdapter.updateTasks(taskList) // Atualiza a lista de tarefas no adapter
         }
+
+        binding.btnvoltar.setOnClickListener {
+            Log.d("DailyScheduleActivity", "Botão Voltar clicado")
+            ActivityCompat.finishAffinity(this) // Finaliza todas as Activities da pilha
+        }
+
+
     }
+
+
 }
+
+

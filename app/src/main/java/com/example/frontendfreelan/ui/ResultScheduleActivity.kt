@@ -2,37 +2,68 @@ package com.example.frontendfreelan.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.frontendfreelan.databinding.ActivityResultScheduleBinding
-import com.example.frontendfreelan.ui.notifications.SharedViewModel
+import androidx.recyclerview.widget.RecyclerView
+import com.example.frontendfreelan.R
+import com.example.frontendfreelan.ui.notifications.NotificationsViewModel
 import com.example.frontendfreelan.ui.notifications.TaskAdapter
+import com.google.firebase.firestore.FirebaseFirestore
+import android.widget.Button
 
 class ResultScheduleActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityResultScheduleBinding
-    private lateinit var taskAdapter: TaskAdapter
-    private lateinit var sharedViewModel: SharedViewModel
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: TaskAdapter
+    private var taskList: MutableList<NotificationsViewModel.Task> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityResultScheduleBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.daily_schedule) // Certifique-se de que o nome do layout está correto
 
-        sharedViewModel = ViewModelProvider(this).get(SharedViewModel::class.java)
-
-        taskAdapter = TaskAdapter(emptyList()) { task, position ->
-            // Ação ao clicar em um item da lista
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter = TaskAdapter(taskList) { task, position ->
+            // Handle item click
         }
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        binding.recyclerView.adapter = taskAdapter
+        recyclerView.adapter = adapter
 
-        sharedViewModel.tasks.observe(this) { taskList ->
-            taskAdapter.updateTasks(taskList)
-        }
+        // Supondo que você tenha um método para obter a data selecionada
+        val selectedDate = getSelectedDate()
+        loadTasksForDate(selectedDate)
 
-        binding.btnVoltar.setOnClickListener {
+        // Adicionando o OnClickListener ao botão "Voltar"
+        val btnVoltar: Button = findViewById(R.id.btnvoltar)
+        btnVoltar.setOnClickListener {
             finish()
         }
+    }
+
+    fun fetchTasksByDate(date: String, onSuccess: (List<NotificationsViewModel.Task>) -> Unit, onFailure: (Exception) -> Unit) {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("tasks")
+            .whereEqualTo("date", date)
+            .get()
+            .addOnSuccessListener { queryDocumentSnapshots ->
+                val tasks = queryDocumentSnapshots.documents.mapNotNull { it.toObject(
+                    NotificationsViewModel.Task::class.java) }
+                onSuccess(tasks)
+            }
+            .addOnFailureListener { exception ->
+                onFailure(exception)
+            }
+    }
+
+    private fun loadTasksForDate(date: String) {
+        fetchTasksByDate(date, { tasks ->
+            taskList.clear()
+            taskList.addAll(tasks)
+            adapter.notifyDataSetChanged()
+        }, { exception ->
+            // Tratar falha
+        })
+    }
+
+    private fun getSelectedDate(): String {
+        // Implementar lógica para obter a data selecionada
+        return "2024-10-03" // Exemplo
     }
 }
