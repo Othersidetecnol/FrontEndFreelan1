@@ -6,74 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".ui.TaskFormActivity">
 
-    <EditText
-        android:id="@+id/input_name"
+    <!-- ConstraintLayout para o campo de nome -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/constraint_layout_name"
         android:layout_width="318dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Título"
-        app:layout_constraintBottom_toTopOf="@+id/input_date"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_date"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/input_date"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- ConstraintLayout para o campo de data -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/constraint_layout_date"
         android:layout_width="318dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Data"
-        android:focusable="false"
-        android:clickable="true"
-        app:layout_constraintBottom_toTopOf="@+id/input_time"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_name" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_name">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Data"
+            android:focusable="false"
+            android:clickable="true" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/input_time"
+    <!-- ConstraintLayout para o campo de hora -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/constraint_layout_time"
         android:layout_width="318dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Hora"
-        app:layout_constraintBottom_toTopOf="@+id/input_details"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_details"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_date" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_date">
 
-    <EditText
-        android:id="@+id/input_details"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hora" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- ConstraintLayout para o campo de detalhes -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/constraint_layout_details"
         android:layout_width="318dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Descrição"
-        app:layout_constraintBottom_toTopOf="@+id/input_value"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:layout_constraintBottom_toTopOf="@+id/constraint_layout_value"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_time" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_time">
 
-    <EditText
-        android:id="@+id/input_value"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Detalhes" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- ConstraintLayout para o campo de valor -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/constraint_layout_value"
         android:layout_width="318dp"
         android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Valor"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         app:layout_constraintBottom_toTopOf="@+id/save_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_details" />
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_details">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Valor" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botão de salvar -->
     <Button
         android:id="@+id/save_button"
         android:layout_width="wrap_content"
@@ -83,6 +118,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_value"
+        app:layout_constraintTop_toBottomOf="@+id/constraint_layout_value"
         app:layout_constraintVertical_bias="0.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

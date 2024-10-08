@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#C6F8EE"
+    android:padding="19dp"
     tools:context=".ui.home.DetailActivity">
 
     <TextView
@@ -10,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
         android:text="Local do Cliente"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
@@ -24,7 +26,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:paddingLeft="15dp"
+        android:paddingStart="15dp"
         android:text="Nome do Cliente"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -43,36 +45,31 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/detail_category"
-        android:layout_width="352dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
         android:text="Categoria"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/detail_title" />
 
     <TextView
         android:id="@+id/detail_description"
-        android:layout_width="360dp"
-        android:layout_height="270dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="100dp"
+        android:layout_width="361dp"
+        android:layout_height="227dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/border_text_box"
+        android:padding="10dp"
         android:text="Descrição"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/detail_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_category"
         app:layout_constraintVertical_bias="0.0" />
@@ -81,31 +78,29 @@
         android:id="@+id/start_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingStart="8dp"
         android:text="Data de Início"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/detail_description"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_description" />
 
     <TextView
         android:id="@+id/end_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingStart="8dp"
         android:text="Data de Término"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/start_date"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginTop="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/start_date" />
 
     <Button
         android:id="@+id/detail_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
+        android:layout_width="150dp"
+        android:layout_height="57dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/purple_700"
+        android:padding="10dp"
         android:text="Fechar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -113,14 +108,14 @@
 
     <Button
         android:id="@+id/btn_iniciar_chat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_width="138dp"
+        android:layout_height="61dp"
+        android:layout_marginBottom="24dp"
         android:text="Iniciar Chat"
         app:layout_constraintBottom_toTopOf="@id/detail_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_button" />
+        app:layout_constraintHorizontal_bias="0.974"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

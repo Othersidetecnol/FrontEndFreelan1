@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.frontendfreelan.databinding.FragmentHomeBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeFragment : Fragment() {
@@ -43,21 +44,29 @@ class HomeFragment : Fragment() {
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Carrega os dados do Firestore
+        // Carrega os dados do Firestore de acordo com o usuário logado
         loadItemsFromFirestore()
     }
 
     private fun loadItemsFromFirestore() {
-        val db = FirebaseFirestore.getInstance()
-        db.collection("items")
-            .get()
-            .addOnSuccessListener { result ->
-                val items = result.toObjects(ItemHome::class.java)
-                adapter.updateItems(items)
-            }
-            .addOnFailureListener { exception ->
-                // Trate o erro aqui
-            }
+        val usuarioLogado = FirebaseAuth.getInstance().currentUser
+
+        usuarioLogado?.let {
+            val userId = it.uid
+            val db = FirebaseFirestore.getInstance()
+
+            // Carregar dados do usuário logado
+            db.collection("items")
+                .whereEqualTo("userId", userId) // Filtra pelos dados do usuário logado
+                .get()
+                .addOnSuccessListener { result ->
+                    val items = result.toObjects(ItemHome::class.java)
+                    adapter.updateItems(items)
+                }
+                .addOnFailureListener { exception ->
+                    // Trate o erro aqui
+                }
+        }
     }
 
     override fun onDestroyView() {

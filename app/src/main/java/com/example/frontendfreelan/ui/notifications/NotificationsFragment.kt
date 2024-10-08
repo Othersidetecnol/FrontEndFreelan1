@@ -40,7 +40,7 @@ class NotificationsFragment : Fragment() {
 
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val selectedDate = "$dayOfMonth/${month + 1}/$year"
-            openResultScheduleActivity(selectedDate)
+            loadTasksByDate(selectedDate)
         }
 
         binding.addNotificationButton.setOnClickListener {
@@ -60,6 +60,22 @@ class NotificationsFragment : Fragment() {
         val user = auth.currentUser
         if (user != null) {
             db.collection("users").document(user.uid).collection("tasks")
+                .get()
+                .addOnSuccessListener { result ->
+                    val tasks = result.map { document -> document.toObject(Task::class.java) }
+                    adapter.submitList(tasks)
+                }
+                .addOnFailureListener { exception ->
+                    // Handle the error
+                }
+        }
+    }
+
+    private fun loadTasksByDate(date: String) {
+        val user = auth.currentUser
+        if (user != null) {
+            db.collection("users").document(user.uid).collection("tasks")
+                .whereEqualTo("date", date)
                 .get()
                 .addOnSuccessListener { result ->
                     val tasks = result.map { document -> document.toObject(Task::class.java) }

@@ -3,6 +3,7 @@ package com.example.frontendfreelan.ui.home
 import java.io.Serializable
 
 data class ItemHome(
+    val userId: String = "",
     val name_cliente: String = "",
     val local_cliente: String = "",
     val title: String = "",

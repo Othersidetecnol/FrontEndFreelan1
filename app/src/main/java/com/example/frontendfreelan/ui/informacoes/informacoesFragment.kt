@@ -7,14 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.example.frontendfreelan.R
 import com.example.frontendfreelan.databinding.FragmentInformacoesBinding
+import com.example.frontendfreelan.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class InformacoesFragment : Fragment() {
 
     private var _binding: FragmentInformacoesBinding? = null
     private val binding get() = _binding!!
+    private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +40,26 @@ class InformacoesFragment : Fragment() {
             openWhatsApp("+55 48 9 8806-6473")
         }
 
+        // Configura o clique no botão de deslogar
+        binding.deslogar.setOnClickListener {
+            deslogarusuario()
+        }
+
         return root
+    }
+
+    private fun deslogarusuario() {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Deslogar")
+            .setMessage("Deseja realmente sair?")
+            .setNegativeButton("não") { dialog, _ -> }
+            .setPositiveButton("sim") { dialog, _ ->
+                firebaseAuth.signOut()
+                startActivity(
+                    Intent(requireContext(), LoginActivity::class.java)
+                )
+            }
+            .show()
     }
 
     private fun openLink(url: String) {

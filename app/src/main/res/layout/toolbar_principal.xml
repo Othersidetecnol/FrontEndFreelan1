@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
+
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/tbPrincipal"
         android:layout_width="420dp"
@@ -23,15 +25,18 @@
 
 
         <Button
-            android:id="@+id/close_button"
-            android:layout_width="60dp"
-            android:layout_height="25dp"
-            android:layout_gravity="start|center_vertical"
+            android:id="@+id/menu_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_horizontal"
             android:background="@android:color/transparent"
-            android:contentDescription="Voltar"
-            android:drawableLeft="@drawable/left"
+            android:contentDescription="menu"
+            android:drawableLeft="@drawable/ic_menu_usuario"
             android:drawableTint="@android:color/black"
-            android:gravity="center" />
+            />
+
+
+
 
     </com.google.android.material.appbar.MaterialToolbar>
 
