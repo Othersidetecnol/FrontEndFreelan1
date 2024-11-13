@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.chat.ChatActivity">
 
-
     <include
         android:id="@+id/includeToolbar"
         layout="@layout/toolbar_customizada"
@@ -16,11 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        />
-
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/chat_title"
@@ -34,8 +29,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/includeToolbar" />
-
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recycler_view"
@@ -64,8 +57,9 @@
             android:id="@+id/message_input"
             android:layout_width="292dp"
             android:layout_height="59dp"
-            android:layout_weight="1"
-            android:hint="Digite sua mensagem" />
+            android:hint="Digite sua mensagem"
+            android:imeOptions="actionSend"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/send_button"
